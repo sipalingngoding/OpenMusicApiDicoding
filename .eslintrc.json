@@ -21,7 +21,13 @@
                 "allow": [
                     "_service",
                     "_validator",
-                    "_pool"
+                    "_pool",
+                    "_usersService",
+                    "_tokenManager",
+                    "_playlistsService",
+                    "_songsService",
+                    "_activitiesService",
+                    "_collaborationsService"
                 ]
             }
         ]
