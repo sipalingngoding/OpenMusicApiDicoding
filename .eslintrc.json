@@ -27,7 +27,12 @@
                     "_playlistsService",
                     "_songsService",
                     "_activitiesService",
-                    "_collaborationsService"
+                    "_collaborationsService",
+                    "_albumsService",
+                    "_exports",
+                    "_cacheService",
+                    "_client",
+                    "_folder"
                 ]
             }
         ]

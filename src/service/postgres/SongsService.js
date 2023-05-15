@@ -26,18 +26,18 @@ class SongsService {
     let result = null;
 
     if (!title && !performer) {
-      result = await this._pool.query('SELECT * FROM songs');
+      result = await this._pool.query('SELECT id,title,performer FROM songs');
     } else if (!title) {
       const paternPerformer = `%${performer}%`;
       const query = {
-        text: 'SELECT * FROM songs WHERE performer ILIKE $1',
+        text: 'SELECT id,title,performer FROM songs WHERE performer ILIKE $1',
         values: [paternPerformer],
       };
       result = await this._pool.query(query);
     } else if (!performer) {
       const paternTitle = `%${title}%`;
       const query = {
-        text: 'SELECT * FROM songs WHERE title ILIKE $1',
+        text: 'SELECT id,title,performer FROM songs WHERE title ILIKE $1',
         values: [paternTitle],
       };
       result = await this._pool.query(query);
@@ -45,13 +45,13 @@ class SongsService {
       const paternPerformer = `%${performer}%`;
       const paternTitle = `%${title}%`;
       const query = {
-        text: 'SELECT * FROM songs WHERE title ILIKE $1 AND performer ILIKE $2',
+        text: 'SELECT id,title,performer FROM songs WHERE title ILIKE $1 AND performer ILIKE $2',
         values: [paternTitle, paternPerformer],
       };
       result = await this._pool.query(query);
     }
 
-    return result.rows.map((r) => ({ id: r.id, title: r.title, performer: r.performer }));
+    return result.rows;
   }
 
   async getSongById(id) {
